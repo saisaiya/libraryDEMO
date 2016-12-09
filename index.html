@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <meta name="viewport" content="width=device-width"/>
+    <link rel="stylesheet" href="./css/bootstrap.min.css">
+    <script src="./js/jquery-3.1.0.js"></script>
+    <style>
+        .content-box{
+            width:80%;
+            margin: 10%;
+        }
+    </style>
+</head>
+<body>
+<div class="content-box">
+    <h2>图书管理系统</h2>
+    <form action="index2.html" id="form">
+        <div class="form-group has-feedback" id="usernameBox">
+            <label class="control-label">User Name</label>
+            <input type="text" class="form-control" id="username">
+            <span class="glyphicon glyphicon-ok form-control-feedback sr-only" id="span"></span>
+            <span class="glyphicon glyphicon-remove form-control-feedback sr-only" id="span2"></span>
+        </div>
+        <div class="form-group has-feedback" id="pwdBox">
+            <label class="control-label" >User Password</label>
+            <input type="password" class="form-control" id="password">
+            <span class="glyphicon glyphicon-ok form-control-feedback sr-only" id="span3"></span>
+            <span class="glyphicon glyphicon-remove form-control-feedback sr-only" id="span4"></span>
+        </div>
+        <button type="button" class="btn btn-primary" id="btnLogin">登录</button>
+    </form>
+</div>
+<script>
+    $(function(){
+        $("#username").blur(function(){
+            if($(this).val()!=="admin"){
+                $("#usernameBox").addClass("has-error");
+                $("#span2").removeClass("sr-only");
+            }else{
+                $("#usernameBox").removeClass("has-error");
+                $("#span").removeClass("sr-only");
+                $("#usernameBox").addClass("has-success has-feedback");
+
+            }
+        });
+
+        $("#password").blur(function(){
+            if($(this).val()!=="admin"){
+                $("#pwdBox").addClass("has-error");
+                $("#span4").removeClass("sr-only");
+            }else{
+                $("#pwdBox").removeClass("has-error");
+                $("#span3").removeClass("sr-only");
+                $("#pwdBox").addClass("has-success has-feedback");
+
+            }
+        });
+
+        $("#btnLogin").click(function(){
+            if($("#username").val() == "admin" && $("#password").val() == "admin" ){
+                $("#form").submit();
+            }else if($("#username").val() != "admin" ){
+                $("#usernameBox").addClass("has-error");
+            }else if($("#password").val() != "admin" ){
+                $("#pwdBox").addClass("has-error");
+            }
+        });
+    });
+</script>
+</body>
+</html>
